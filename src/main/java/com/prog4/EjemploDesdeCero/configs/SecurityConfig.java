@@ -38,8 +38,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 
                 // Configuración del ABM de Clases según Roles
-                .requestMatchers(HttpMethod.GET, "/api/classes/**").hasAnyRole("CLIENT", "ADMIN")
-                .requestMatchers("/api/classes/**").hasRole("ADMIN") // POST, PUT, DELETE
+                .requestMatchers(HttpMethod.GET, "/api/clases/**").hasAnyRole("CLIENT", "ADMIN")
+                .requestMatchers("/api/clases/**").hasRole("ADMIN") // POST, PUT, DELETE
                 
                 .anyRequest().authenticated()
             )

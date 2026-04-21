@@ -1,7 +1,5 @@
 package com.prog4.EjemploDesdeCero.features.clases.models;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,8 +32,6 @@ public class Clase {
     @Min(5)
     @Max(50)
     private Integer maxCapacity;
-
-    private LocalDateTime startTime;
 
     @Builder.Default
     private boolean deleted = false;

@@ -1,5 +1,7 @@
 package com.prog4.EjemploDesdeCero.features.clases.mappers;
 
+import java.util.List;
+
 import com.prog4.EjemploDesdeCero.features.clases.dtos.request.ClaseCreateRequestDto;
 import com.prog4.EjemploDesdeCero.features.clases.models.Clase;
 import com.prog4.EjemploDesdeCero.features.clases.dtos.response.ClaseResponseDto;
@@ -11,7 +13,6 @@ public class ClaseMapper {
                 .name(request.name())
                 .instructor(request.instructor())
                 .maxCapacity(request.maxCapacity())
-                .startTime(request.startTime())
                 .build();
     }
 
@@ -20,8 +21,13 @@ public class ClaseMapper {
             model.getId(),
             model.getName(),
             model.getInstructor(),
-            model.getMaxCapacity(),
-            model.getStartTime()
+            model.getMaxCapacity()
         );
+    }
+
+    public static List<ClaseResponseDto> toResponseDtoList (List<Clase> models) {
+        return models.stream()
+                .map(ClaseMapper::toResponseDto)
+                .toList();
     }
 }
