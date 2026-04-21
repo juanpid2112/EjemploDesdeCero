@@ -3,6 +3,7 @@ package com.prog4.EjemploDesdeCero.features.clases.mappers;
 import java.util.List;
 
 import com.prog4.EjemploDesdeCero.features.clases.dtos.request.ClaseCreateRequestDto;
+import com.prog4.EjemploDesdeCero.features.clases.dtos.request.ClasePatchRequestDto;
 import com.prog4.EjemploDesdeCero.features.clases.models.Clase;
 import com.prog4.EjemploDesdeCero.features.clases.dtos.response.ClaseResponseDto;
 
@@ -29,5 +30,11 @@ public class ClaseMapper {
         return models.stream()
                 .map(ClaseMapper::toResponseDto)
                 .toList();
+    }
+
+    public static Clase toPatchModel (ClasePatchRequestDto request, Clase model) {
+        model.setInstructor(request.instructor());
+        model.setMaxCapacity(request.maxCapacity());
+        return model;
     }
 }
