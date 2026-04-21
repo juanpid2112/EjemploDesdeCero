@@ -3,6 +3,7 @@ package com.prog4.EjemploDesdeCero.features.clases.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.prog4.EjemploDesdeCero.features.clases.dtos.response.ClaseResponseDto
 import com.prog4.EjemploDesdeCero.features.clases.services.interfaces.domain.IClaseCreateService;
 import com.prog4.EjemploDesdeCero.features.clases.services.interfaces.domain.IClaseListService;
 import com.prog4.EjemploDesdeCero.features.clases.services.interfaces.domain.IClasePatchService;
+import com.prog4.EjemploDesdeCero.features.clases.services.interfaces.domain.IClaseDeleteService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -32,6 +34,8 @@ public class ClaseController {
     private final IClaseListService claseListService;
 
     private final IClasePatchService clasePatchService;
+
+    private final IClaseDeleteService claseDeleteService;
 
     @PostMapping
     public ResponseEntity<BaseResponse<ClaseResponseDto>> createClase(
@@ -64,6 +68,18 @@ public class ClaseController {
             BaseResponse.ok(
                 clasePatchService.execute(id, request), 
                 "Clase actualizada correctamente"
+            )
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<BaseResponse<Void>> deleteClase(
+        @PathVariable Long id
+    ) {
+        claseDeleteService.execute(id);
+        return ResponseEntity.ok(
+            BaseResponse.noContent(
+                "Clase eliminada correctamente"
             )
         );
     }

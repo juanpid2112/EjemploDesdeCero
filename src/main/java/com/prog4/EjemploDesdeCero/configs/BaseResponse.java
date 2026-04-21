@@ -30,4 +30,13 @@ public class BaseResponse<T> {
                 .withZone(ZoneOffset.UTC)
                 .format(Instant.now());
     }
+
+    public static <T> BaseResponse<T> noContent(String message) {
+        return BaseResponse.<T>builder()
+                .data(null)
+                .message(message)
+                .errors(null)
+                .timestamp(getCurrentTimestamp())
+                .build();
+    }
 }
