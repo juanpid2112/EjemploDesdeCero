@@ -1,0 +1,12 @@
+target/
+.git/
+.gitignore
+.idea/
+*.iml
+.vscode/
+.cursor/
+docs/
+volume_bd/
+.env
+*.md
+HELP.md

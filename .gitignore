@@ -33,3 +33,7 @@ build/
 .vscode/
 .cursor/
 /docs/
+
+### Docker ###
+.env
+volume_bd/pgdata/
